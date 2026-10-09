@@ -1,0 +1,154 @@
+html {
+    box-sizing:border-box;
+}
+
+*, *:before, *:after {
+    box-sizing:inherit;
+}
+
+img {
+    max-width: 100%;
+}
+
+/* 
+Notes on new terms in the styles below:
+-vw stands for "viewport width" and the number represents a percentage of that width. "10vw" is 10%
+of the viewport's width
+-span is different than the span we learned about when discussing HTML. here it  means that given 
+grid column extends from an initial grid line to an second grid line, so "1 / span 5" means the column 
+extends from grid line one to grid line five. 
+*/
+
+/* Wide screen Column layouts */
+body {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: auto auto auto; 
+  grid-gap: 1.5em;
+  margin-left: 2em;
+  margin-right: 2em;
+}
+
+header, footer {
+  grid-column: 1 / span 5;
+}
+
+main {
+  grid-column: 1 / span 3;
+}
+
+aside{
+  grid-column: 4 / span 5
+}
+
+
+
+
+/* Specific Styles */
+body {
+  font-family: "Source Sans 3", sans-serif;
+}
+
+header, main, aside, footer {
+  display: flex;
+  flex-direction: column;
+  align-items:start;
+  justify-content: start;
+}
+
+.title {
+  font-size: 5em;
+  margin-top: .2em;
+  margin-bottom: .2em;
+  text-decoration: underline;
+  text-underline-offset: .3em;
+}
+
+.column-container {
+  column-count: 2;
+  background-color: lightgray;
+  padding: .75em;
+  margin-top: .5em;
+  margin-bottom: 1.5em;
+  line-height: 1.4em;
+
+  p{
+    margin-bottom: 1.5em;
+  }
+}
+
+.caption {
+  font-size: .75em;
+  margin-top: .7em;
+}
+
+aside {
+  background-color: lightgray;
+  line-height: 1.2em;
+  margin-bottom: 1.5em;
+}
+
+.aside-header {
+  font-size: 1.5em;
+  line-height: 1.2em;
+  margin-top: 1em;
+  margin-bottom: .75em;
+  margin-left: 1em;
+}
+
+ul {
+  list-style:square;
+  font-size: .85em;
+  margin-bottom: 1em;
+  margin-left: 3em;
+  margin-right: 3em;
+
+}
+
+footer{
+  background-color: lightgray;
+  margin-left: -2em;
+  margin-right: -6.2em;
+}
+
+.footer-header {
+    font-size: 1.5em;
+}
+
+.footer-margins {
+    margin-left: 2em;
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+
+/* 
+this is a media query that says "when the width of the viewport exceeds 700px, activate the following styles",
+then, the grid column span for the main and aside elements changes from 1 / span 3 and span 2, respectively, to 1 / span 5 for both elements
+*/
+
+/* Phone View */
+@media (max-width: 700px) {
+  
+  main, aside {
+    grid-column: 1 / span 5;
+  }
+
+ .column-container {
+    Column-count: 1;
+  }
+
+  aside{
+    grid-column: 1 / span 5;
+  }
+
+  .title {
+    line-height: 1.5em;
+    margin-top: .2em
+  }
+
+  footer{
+    margin-left: -2em;
+    margin-right: -2em;
+  }
+
+}
